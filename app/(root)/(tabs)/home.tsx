@@ -8,6 +8,7 @@ import Map from "@/components/Map";
 import { useLocationsStore } from "@/store";
 import { useEffect, useState } from "react";
 import * as Location from 'expo-location';
+import { router } from "expo-router";
 
 const recentRides = [
     {
@@ -119,8 +120,9 @@ const Home = () => {
     const handleSignOut = () => {
 
     }
-    const handleDestination = () => {
-
+    const handleDestination = (location: { latitude: number, longitude: number, address: string }) => {
+        setDestinationLocation(location);
+        router.push("/(root)/find-ride");
     }
 
     useEffect(() => {
